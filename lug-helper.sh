@@ -261,6 +261,7 @@ try_exec() {
     retval=0
     # Use pollkit's pkexec for gui authentication with a fallback to sudo
     if [ -x "$(command -v pkexec)" ]; then
+        gnome-terminal -- bash -c "pkttyagent --process $$"
         pkexec sh -c "$1"
 
         # Check the exit status
